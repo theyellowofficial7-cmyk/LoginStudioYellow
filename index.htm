@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Studio Yellow - Login</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      background: #ffffff;
+      font-family: Arial, sans-serif;
+      color: #000000;
+    }
+
+    /* =========================
+       BANNER
+       ========================= */
+
+    .banner {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    /* =========================
+       LOGIN AREA
+       ========================= */
+
+    .login-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 30px 15px 50px;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 500px;
+      min-height: 500px;
+
+      background-image: url(
+        "https://plain-apac-prod-public.komododecks.com/202609/19/ndqayByNFKzcbdP1WoMa/image.png"
+      );
+
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      padding: 40px 30px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* =========================
+       JUDUL LOGIN
+       ========================= */
+
+    .login-box h1 {
+      text-align: center;
+      font-size: 38px;
+      font-weight: 900;
+
+      margin: 0 0 20px;
+      padding: 0;
+    }
+
+    /* TEXT KECIL DI BAWAH LOGIN */
+
+    .login-subtitle {
+      text-align: center;
+
+      font-size: 13px;
+      font-weight: bold;
+
+      margin-top: -12px;
+      margin-bottom: 25px;
+
+      color: #000000;
+    }
+
+    /* =========================
+       INPUT
+       ========================= */
+
+    input {
+      width: 100%;
+
+      padding: 15px;
+      margin: 0 0 15px;
+
+      border: 3px solid #000000;
+      background: #ffffff;
+
+      font-size: 17px;
+      font-weight: bold;
+
+      outline: none;
+    }
+
+    input:focus {
+      background: #fffde5;
+    }
+
+    /* =========================
+       BUTTON
+       ========================= */
+
+    button {
+      width: 100%;
+
+      padding: 15px;
+
+      border: 3px solid #000000;
+      background: #ffd900;
+
+      font-size: 20px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #000000;
+      color: #ffd900;
+    }
+
+    /* =========================
+       PESAN ERROR
+       ========================= */
+
+    #message {
+      text-align: center;
+
+      margin-top: 15px;
+
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* =========================
+       BELUM TERDAFTAR
+       ========================= */
+
+    .register {
+      text-align: center;
+
+      margin-top: 25px;
+
+      font-size: 14px;
+      font-weight: bold;
+
+      line-height: 1.5;
+    }
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 600px) {
+
+      .login-wrapper {
+        padding: 20px 10px 40px;
+      }
+
+      .login-box {
+        min-height: 450px;
+        padding: 30px 20px;
+      }
+
+      .login-box h1 {
+        font-size: 30px;
+      }
+
+      .login-subtitle {
+        font-size: 12px;
+      }
+
+      input {
+        font-size: 16px;
+      }
+
+      button {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =================================
+       BANNER STUDIO YELLOW
+       ================================= -->
+
+  <div class="banner">
+
+    <img
+      src="https://plain-apac-prod-public.komododecks.com/202609/19/zdDRrabF8bYI8s19w2CG/image.png"
+      alt="Studio Yellow Banner"
+    >
+
+  </div>
+
+
+  <!-- =================================
+       LOGIN
+       ================================= -->
+
+  <div class="login-wrapper">
+
+    <div class="login-box">
+
+      <h1>Login ke Studio Yellow</h1>
+
+      <!-- TEXT KECIL -->
+      <div class="login-subtitle">
+        Tolong untuk tidak ngasih akun ke siapapun!!!
+      </div>
+
+
+      <!-- USERNAME -->
+
+      <input
+        type="text"
+        id="username"
+        placeholder="Username"
+        autocomplete="username"
+      >
+
+
+      <!-- PASSWORD -->
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Password"
+        autocomplete="current-password"
+      >
+
+
+      <!-- TOMBOL LOGIN -->
+
+      <button onclick="login()">
+        MASUK
+      </button>
+
+
+      <!-- PESAN -->
+
+      <div id="message"></div>
+
+
+      <!-- BELUM TERDAFTAR -->
+
+      <div class="register">
+        BELUM TERDAFTAR?<br>
+        Hubungi +62 895-2877-7934 di WA
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =================================
+       JAVASCRIPT LOGIN
+       ================================= -->
+
+<script>
+  const accounts = [
+    {
+      username: "yellow",
+      password: "12345"
+    },
+    {
+      username: "admin",
+      password: "admin123"
+    },
+    {
+      username: "user1",
+      password: "password1"
+    },
+    
+  ];
+
+  function login() {
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
+    const message = document.getElementById("message");
+
+    const account = accounts.find(function(user) {
+      return user.username === username &&
+             user.password === password;
+    });
+
+    if (account) {
+
+      // BUKA WEBSITE DI TAB BARU
+      window.open(
+        "https://studioyellow7.my.canva.site/",
+        "_blank"
+      );
+
+    } else {
+
+      message.textContent = "Username atau password salah!";
+      message.style.color = "red";
+
+    }
+  }
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      login();
+    }
+  });
+</script>
